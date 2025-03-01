@@ -4,16 +4,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowLocal5173", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .SetIsOriginAllowedToAllowWildcardSubdomains();
-    });
-});
 
 var app = builder.Build();
 
@@ -46,12 +36,11 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.UseCors("AllowLocal5173");
-app.MapGet("/hello", () => Results.Json(new { message = "Hello World from server!" }));
+app.MapGet("/", () => Results.Json(new { message = "Hello World from server!" }));
 
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
