@@ -1,35 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react';
 import './App.css'
 
-function App() {
+function StampMeApp() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="landing-page">
+      <header className="landing-header">
+        <h1>Stamp-Me</h1>
+        <p>Make your time count.</p>
+        <button style={{width: '150px', height: '50px', marginRight: '10px'}} className="cta-button">Register</button>
+        <button style={{width: '150px', height: '50px'}} className="cta-button" >Login</button>
+      </header>
+
+      <section className="features">
+        <div className="feature">
+          <h3 >Need help?</h3>
+          <p>Then get some</p>
+        </div>
+      </section>
+      <footer className="landing-footer">
+        <p>&copy; {new Date().getFullYear()} My Company. All rights reserved.</p>
+      </footer>
+    </div>
   )
 }
 
-export default App
+export default StampMeApp;
